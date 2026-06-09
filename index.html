@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bishula Khanal — AI Developer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+  --bg: #0A0A0F;
+  --bg2: #14141B;
+  --bg3: #1B1B24;
+  --card: #16161D;
+
+  --accent: #FF2D95;
+  --accent2: #8B5CF6;
+
+  --text: #FFFFFF;
+  --muted: #C9C9D9;
+  --border: #262635;
+
+  --pink: #FF2D95;
+  --rose: #FF8CC8;
+  --mono: 'Space Grotesk', sans-serif;
+  --sans: 'Plus Jakarta Sans', sans-serif;
+}
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--sans);
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background:
+      radial-gradient(ellipse 60% 50% at 10% 20%, rgba(233,30,140,0.06) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 60% at 90% 80%, rgba(194,24,91,0.05) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+  }
+
+ /* ── NAV ── */
+nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 1rem 2.5rem;
+
+  background: rgba(10, 10, 15, 0.85);
+  backdrop-filter: blur(16px);
+
+  border-bottom: 1px solid #242433;
+}
+
+.nav-logo {
+  font-family: var(--mono);
+  font-size: 0.9rem;
+  font-weight: 700;
+
+  color: var(--accent);
+
+  letter-spacing: 0.04em;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-size: 0.8rem;
+  color: #C9C9D9;
+  text-decoration: none;
+
+  font-family: var(--mono);
+  letter-spacing: 0.06em;
+
+  transition: all 0.2s ease;
+}
+
+.nav-links a:hover {
+  color: var(--accent);
+}
+
+/* ── HERO ── */
+.hero {
+  min-height: 100vh;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  padding: 8rem 2.5rem 4rem;
+  max-width: 940px;
+  margin: 0 auto;
+
+  position: relative;
+  z-index: 1;
+}
+
+/* Pink/Purple Glow */
+.hero::before {
+  content: '';
+
+  position: absolute;
+  inset: 0;
+
+  background:
+    radial-gradient(circle at 20% 30%,
+    rgba(255,45,149,0.18),
+    transparent 35%),
+
+    radial-gradient(circle at 80% 70%,
+    rgba(139,92,246,0.15),
+    transparent 35%);
+
+  pointer-events: none;
+}
+
+/* STATUS */
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+
+  font-family: var(--mono);
+  font-size: 0.72rem;
+  letter-spacing: 0.08em;
+
+  color: var(--accent);
+
+  margin-bottom: 1.8rem;
+
+  background: rgba(255,45,149,0.08);
+  border: 1px solid rgba(255,45,149,0.25);
+
+  border-radius: 100px;
+  padding: 0.3rem 0.9rem 0.3rem 0.6rem;
+
+  width: fit-content;
+}
+
+.status-dot {
+  width: 6px;
+  height: 6px;
+
+  border-radius: 50%;
+  background: var(--pink);
+
+  animation: pulse 2s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%,100% {
+    box-shadow: 0 0 0 0 rgba(255,45,149,0.55);
+  }
+  50% {
+    box-shadow: 0 0 0 6px rgba(255,45,149,0);
+  }
+}
+
+/* PRE TEXT */
+.hero-pre {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+
+  color: #B4B4C7;
+
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+
+  margin-bottom: 1.2rem;
+}
+
+/* NAME */
+.hero h1 {
+  font-family: var(--mono);
+
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+
+  line-height: 1;
+  letter-spacing: -0.05em;
+
+  color: #FFFFFF;
+
+  margin-bottom: 0.15rem;
+}
+
+.hero h1 .name-accent {
+  background: linear-gradient(
+    135deg,
+    #FF2D95,
+    #D946EF,
+    #8B5CF6
+  );
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero h1 .cursor {
+  display: inline-block;
+
+  width: 4px;
+  height: 0.85em;
+
+  background: #FF2D95;
+
+  margin-left: 6px;
+
+  vertical-align: middle;
+
+  animation: blink 1.1s step-end infinite;
+}
+
+@keyframes blink {
+  50% {
+    opacity: 0;
+  }
+}
+
+/* SUBTITLE */
+.hero-sub {
+  font-family: var(--mono);
+
+  font-size: clamp(0.9rem, 2vw, 1.15rem);
+
+  color: #FF8CC8;
+
+  margin-bottom: 1.8rem;
+
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* DESCRIPTION */
+.hero-desc {
+  font-size: 1rem;
+
+  color: #D8D8E5;
+
+  max-width: 540px;
+
+  line-height: 1.85;
+
+  margin-bottom: 2.5rem;
+}
+
+/* BUTTONS */
+.hero-links {
+  display: flex;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+
+  padding: 0.7rem 1.4rem;
+
+  border-radius: 999px;
+
+  font-family: var(--mono);
+  font-size: 0.78rem;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition: all 0.2s ease;
+
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: linear-gradient(
+    135deg,
+    #FF2D95,
+    #D946EF
+  );
+
+  color: white;
+  border: none;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(255,45,149,0.25);
+}
+
+.btn-ghost {
+  background: rgba(255,255,255,0.02);
+
+  color: #D8D8E5;
+
+  border: 1px solid #2B2B38;
+}
+
+.btn-ghost:hover {
+  border-color: #FF2D95;
+  color: #FF2D95;
+
+  background: rgba(255,45,149,0.05);
+}
+
+  /* ── DIVIDER ── */
+  .divider {
+    border: none;
+    border-top: 1px solid var(--border);
+    max-width: 940px;
+    margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+
+  /* ── SECTION ── */
+  section {
+    padding: 5rem 2.5rem;
+    max-width: 940px;
+    margin: 0 auto;
+    position: relative; z-index: 1;
+  }
+  .section-eyebrow {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--rose);
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .section-title {
+    font-family: var(--mono);
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 2.5rem;
+    letter-spacing: -0.02em;
+  }
+
+  /* ── SKILLS ── */
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+    gap: 0.9rem;
+  }
+  .skill-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1.2rem 1.3rem;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .skill-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .skill-category {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    margin-bottom: 0.7rem;
+  }
+  .skill-tags { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tag {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--muted);
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.18rem 0.6rem;
+  }
+
+  /* ── PROJECTS ── */
+  .projects-grid { display: flex; flex-direction: column; gap: 1.2rem; }
+  .project-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 1.8rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+  .project-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .project-card::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--accent), var(--rose));
+    opacity: 0;
+    transition: opacity 0.2s;
+  }
+  .project-card:hover::after { opacity: 1; }
+
+  .project-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 1rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+  .project-name {
+    font-family: var(--mono);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+  }
+  .project-links { display: flex; gap: 0.5rem; flex-shrink: 0; }
+  .project-links a {
+    font-family: var(--mono);
+    font-size: 0.7rem;
+    color: var(--accent);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 100px;
+    padding: 0.2rem 0.75rem;
+    transition: all 0.2s;
+  }
+  .project-links a:hover { border-color: var(--accent); background: rgba(194,24,91,0.06); }
+
+  .project-points { list-style: none; display: flex; flex-direction: column; gap: 0.4rem; margin-bottom: 1rem; }
+  .project-points li {
+    font-size: 0.88rem;
+    color: var(--muted);
+    padding-left: 1.1rem;
+    position: relative;
+  }
+  .project-points li::before {
+    content: '›';
+    position: absolute; left: 0;
+    color: var(--rose); font-weight: 700;
+  }
+
+  .project-tech { display: flex; flex-wrap: wrap; gap: 0.35rem; }
+  .tech-tag {
+    font-family: var(--mono);
+    font-size: 0.68rem;
+    color: var(--accent);
+    background: rgba(194,24,91,0.07);
+    border: 1px solid rgba(194,24,91,0.18);
+    border-radius: 100px;
+    padding: 0.15rem 0.65rem;
+  }
+
+  /* ── EDUCATION ── */
+  .edu-card {
+    background: var(--bg3);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 2rem 2.2rem;
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    flex-wrap: wrap;
+  }
+  .edu-year {
+    font-family: var(--mono);
+    font-size: 0.78rem;
+    color: var(--rose);
+    white-space: nowrap;
+    margin-top: 0.3rem;
+    background: rgba(233,30,140,0.07);
+    border: 1px solid rgba(233,30,140,0.15);
+    border-radius: 100px;
+    padding: 0.25rem 0.75rem;
+    height: fit-content;
+  }
+  .edu-content h3 {
+    font-family: var(--mono);
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+  }
+  .edu-content p { font-size: 0.9rem; color: var(--muted); margin-bottom: 0.4rem; }
+  .edu-stats { display: flex; gap: 2rem; margin-top: 0.8rem; }
+  .edu-stat { display: flex; flex-direction: column; }
+  .edu-stat-val {
+    font-family: var(--mono);
+    font-size: 1.4rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .edu-stat-label { font-size: 0.75rem; color: var(--muted); }
+
+  /* ── CONTACT ── */
+  .contact-inner {
+    display: grid;
+    grid-template-columns: 160px 1fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .photo-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+  }
+  .photo-ring {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--accent), var(--rose), var(--pink));
+    flex-shrink: 0;
+  }
+  .photo-ring img {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+    background: var(--bg2);
+  }
+  .photo-placeholder {
+    width: 100%; height: 100%;
+    border-radius: 50%;
+    background: var(--bg2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--mono);
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+  .photo-name {
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    text-align: center;
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+    gap: 0.9rem;
+  }
+  .contact-item {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 1rem 1.2rem;
+    text-decoration: none;
+    transition: border-color 0.2s, transform 0.2s;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .contact-item:hover { border-color: var(--accent); transform: translateY(-2px); }
+  .contact-type {
+    font-family: var(--mono);
+    font-size: 0.67rem;
+    color: var(--rose);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+  .contact-val { font-size: 0.82rem; color: var(--text); }
+
+  /* ── FOOTER ── */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2rem 2.5rem;
+    text-align: center;
+    font-family: var(--mono);
+    font-size: 0.72rem;
+    color: var(--muted);
+    position: relative; z-index: 1;
+  }
+  footer span { color: var(--accent); }
+
+  /* ── MOBILE ── */
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.2rem; }
+    .nav-links { gap: 1rem; }
+    .hero { padding: 7rem 1.2rem 3rem; }
+    section { padding: 3.5rem 1.2rem; }
+    .edu-card { flex-direction: column; gap: 0.6rem; }
+    .contact-inner { grid-template-columns: 1fr; }
+    .photo-wrapper { flex-direction: row; justify-content: flex-start; }
+    footer { padding: 1.5rem 1.2rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .hero h1 .cursor, .status-dot { animation: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#" class="nav-logo">bishula.np</a>
+  <ul class="nav-links">
+    <li><a href="#skills">skills</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#education">education</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</nav>
+
+<!-- ── HERO ── -->
+<div class="hero">
+  <div class="status">
+    <span class="status-dot"></span>
+    open to opportunities
+  </div>
+  <p class="hero-pre">Computer Engineer &amp; AI Developer</p>
+  <h1><span class="name-accent">Bishula</span><br>Khanal<span class="cursor"></span></h1>
+  <p class="hero-sub">Agentic AI &nbsp;·&nbsp; Voice AI &nbsp;·&nbsp; Computer Vision</p>
+  <p class="hero-desc">
+    Building end-to-end AI systems that work beyond the benchmark — from voice enrollment advisors to medical image classifiers deployed in real clinical settings.
+  </p>
+  <div class="hero-links">
+    <a href="#projects" class="btn btn-primary">View Projects</a>
+    <a href="https://github.com/bishulakhanal" target="_blank" class="btn btn-ghost">GitHub ↗</a>
+    <a href="https://linkedin.com/in/bishulakhanal" target="_blank" class="btn btn-ghost">LinkedIn ↗</a>
+    <a href="https://mail.google.com/mail/?view=cm&to=bishulakhanal@gmail.com" target="_blank" class="btn btn-ghost">Email ↗</a>
+  </div>
+</div>
+
+<hr class="divider">
+
+<!-- ── SKILLS ── -->
+<section id="skills">
+  <p class="section-eyebrow">— expertise</p>
+  <h2 class="section-title">Technical Skills</h2>
+  <div class="skills-grid">
+    <div class="skill-card">
+      <p class="skill-category">Agentic &amp; GenAI</p>
+      <div class="skill-tags">
+        <span class="tag">LLM Integration</span>
+        <span class="tag">RAG Pipelines</span>
+        <span class="tag">Prompt Engineering</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <p class="skill-category">Voice AI</p>
+      <div class="skill-tags">
+        <span class="tag">ElevenLabs</span>
+        <span class="tag">STT / TTS</span>
+        <span class="tag">Voice Automation</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <p class="skill-category">Orchestration</p>
+      <div class="skill-tags">
+        <span class="tag">Make / Integromat</span>
+        <span class="tag">Zapier</span>
+        <span class="tag">API Chaining</span>
+        <span class="tag">Google Sheets</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <p class="skill-category">Computer Vision</p>
+      <div class="skill-tags">
+        <span class="tag">YOLOv8</span>
+        <span class="tag">Transfer Learning</span>
+        <span class="tag">Object Detection</span>
+        <span class="tag">Image Classification</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <p class="skill-category">NLP</p>
+      <div class="skill-tags">
+        <span class="tag">Retrieval Chatbots</span>
+        <span class="tag">Text Classification</span>
+      </div>
+    </div>
+    <div class="skill-card">
+      <p class="skill-category">Stack</p>
+      <div class="skill-tags">
+        <span class="tag">Python</span>
+        <span class="tag">Pandas</span>
+        <span class="tag">Flask</span>
+        <span class="tag">SQL</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── PROJECTS ── -->
+<section id="projects">
+  <p class="section-eyebrow">— work</p>
+  <h2 class="section-title">Projects</h2>
+  <div class="projects-grid">
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-name">Agentic Voice Enrollment Advisor</span>
+        <div class="project-links">
+          <a href="https://github.com/bishulakhanal" target="_blank">GitHub ↗</a>
+          <a href="https://agentic-ai-voice-assistant.vercel.app/" target="_blank">Demo ↗</a>
+        </div>
+      </div>
+      <ul class="project-points">
+        <li>Voice-driven agentic pipeline handling call intake, intent extraction, and slot booking</li>
+        <li>Integrated ElevenLabs STT/TTS with LLM reasoning for natural conversation flows</li>
+        <li>Automated lead logging into Google Sheets via Make; deployed on Vercel</li>
+      </ul>
+      <div class="project-tech">
+        <span class="tech-tag">ElevenLabs</span>
+        <span class="tech-tag">Make</span>
+        <span class="tech-tag">Google Sheets</span>
+        <span class="tech-tag">Vercel</span>
+        <span class="tech-tag">LLM</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-name">NeuroVision: Brain Tumor Detection</span>
+        <div class="project-links">
+          <a href="https://github.com/bishulakhanal" target="_blank">GitHub ↗</a>
+          <a href="https://github.com/BishulaKhanal/NeuroVision/blob/main/video_Demonstration.mp4" target="_blank">Demo ↗</a>
+        </div>
+      </div>
+      <ul class="project-points">
+        <li>VGG16 MRI classifier with Grad-CAM explainability and Flask web interface</li>
+        <li>Retrieval-based chatbot surfaces model predictions conversationally for non-technical users</li>
+        <li>Validated at Annapurna Neurological Institute — 98% benchmark, ~93% real-world accuracy</li>
+        <li>Research paper submitted: <em>Generalization Gap in Medical AI</em> (KEC Journal)</li>
+      </ul>
+      <div class="project-tech">
+        <span class="tech-tag">VGG16</span>
+        <span class="tech-tag">Grad-CAM</span>
+        <span class="tech-tag">Flask</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">NLP</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-header">
+        <span class="project-name">Real-Time Threat Detection</span>
+        <div class="project-links">
+          <a href="https://github.com/bishulakhanal" target="_blank">GitHub ↗</a>
+          <a href="https://github.com/BishulaKhanal/Real-time-threat-detection-system-using-YOLO-algorithm/blob/main/yolov8_object_detection.mp4" target="_blank">Demo ↗</a>
+        </div>
+      </div>
+      <ul class="project-points">
+        <li>Fine-tuned YOLOv8 for weapon and violent behavior detection in live video streams</li>
+        <li>Automated alert and event logging on detection; optimized for low-latency inference</li>
+        <li>Developed in collaboration with Nepal Police Headquarters</li>
+      </ul>
+      <div class="project-tech">
+        <span class="tech-tag">YOLOv8</span>
+        <span class="tech-tag">Python</span>
+        <span class="tech-tag">Computer Vision</span>
+        <span class="tech-tag">Real-time Inference</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── EDUCATION ── -->
+<section id="education">
+  <p class="section-eyebrow">— background</p>
+  <h2 class="section-title">Education</h2>
+  <div class="edu-card">
+    <div class="edu-year">2022 — 2026</div>
+    <div class="edu-content">
+      <h3>B.E. Computer Engineering</h3>
+      <p>Kathmandu Engineering College, Tribhuvan University</p>
+      <div class="edu-stats">
+        <div class="edu-stat">
+          <span class="edu-stat-val">80.84%</span>
+          <span class="edu-stat-label">7th Semester GPA</span>
+        </div>
+        <div class="edu-stat">
+          <span class="edu-stat-val">8.0</span>
+          <span class="edu-stat-label">IELTS Score</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ── CONTACT ── -->
+<section id="contact">
+  <p class="section-eyebrow">— connect</p>
+  <h2 class="section-title">Get in Touch</h2>
+  <div class="contact-inner">
+
+    <div class="photo-wrapper">
+      <div class="photo-ring">
+        <img src="profile.jpg" alt="Bishula Khanal"
+          onerror="this.style.display='none';this.nextElementSibling.style.display='flex';">
+        <div class="photo-placeholder" style="display:none;">BK</div>
+      </div>
+      <span class="photo-name">Bishula Khanal</span>
+    </div>
+
+    <div class="contact-grid">
+      <a href="https://mail.google.com/mail/?view=cm&to=bishulakhanal@gmail.com" target="_blank" class="contact-item">
+         <span class="contact-type">Email</span>
+         <span class="contact-val">bishulakhanal@gmail.com</span>
+      </a>
+      <a href="https://linkedin.com/in/bishulakhanal" target="_blank" class="contact-item">
+        <span class="contact-type">LinkedIn</span>
+        <span class="contact-val">bishulakhanal</span>
+      </a>
+      <a href="https://github.com/bishulakhanal" target="_blank" class="contact-item">
+        <span class="contact-type">GitHub</span>
+        <span class="contact-val">bishulakhanal</span>
+      </a>
+      <a href="tel:+9779847367263" class="contact-item">
+        <span class="contact-type">Phone</span>
+        <span class="contact-val">+977 984 736 7263</span>
+      </a>
+      <a href="https://bishulakhanal.com.np" class="contact-item">
+        <span class="contact-type">Website</span>
+        <span class="contact-val">bishulakhanal.com.np</span>
+      </a>
+      <div class="contact-item" style="cursor:default;">
+        <span class="contact-type">Location</span>
+        <span class="contact-val">Kathmandu, Nepal</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <p>by <span>bishula khanal</span> · kathmandu, nepal · <span>bishulakhanal.com.np</span></p>
+</footer>
+
+</body>
+</html>
